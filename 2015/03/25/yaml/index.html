@@ -18,7 +18,7 @@
 
 
 
-	<meta name="keywords" content="git,开发工具," />
+	<meta name="keywords" content="PHP,YAML," />
 
   <title> git简单入门 // ShrimpMa's Notes </title>
 </head>
@@ -131,13 +131,12 @@
         
 
         
-          <p>网上有很多git的使用，大都比较乱，不太好用<br>写个入门级的，便于大家学习和使用，以在centOS系统 命令行使用为例</p>
-<p>一 准备工作<br>1.安装git     2.了解RAS加密算法和SSH协议</p>
-<p>二.使用步骤<br>1.在github.com 注册帐号，创建repository, 比如地址github.com/shrimpma/php-lib<br>2.下载代码到本地 （相当于svn  checkout）<br>    git init //创建新仓库<br>    git clone /path/to/repository  检出仓库<br>    如果是远程则<br>    git clone username@host:/path/to/repository<br>3.添加和提交<br>git add <filename><br>git add *<br>git commit -m “提交代码信息” //改动已经提交到head,但是还没到远端仓库<br>git push origin master // 可以把master 换成你想要推送的任何分支<br>三 常用其他操作<br> 1.更新本地repository<br>    git pull</filename></p>
-<p>四.常见问题参考解决方法：</p>
-<p>Q:解决git clone提示Permission denied publickey 问题</p>
-<p>A:<a href="https://help.github.com/articles/error-permission-denied-publickey/" target="_blank" rel="external">https://help.github.com/articles/error-permission-denied-publickey/</a></p>
-<p>登陆github 使用ssh协议，使用rsa加密算法后，在本地生成公钥和私钥后，需要把公钥的内容放到 github—-&gt;settings-&gt;ssh keys —&gt;add ssh key </p>
+          <p>1.YAML，标记语言，类似xml,以数据为中心，实现简单，解析成本很低,PHP<br>2.使用场景：<br>    脚本开发中作为配置文件使用<br>3.常用数据结构<br>a. Array:</p>
+<ul>
+<li>1</li>
+<li>Jack<br>…<br>(“-”和之后的内容之间需要有一个空格)<br>b. Hash<br>key1: value1<br>key2: value2<br>…</li>
+</ul>
+<p>(key与”:”之间不需要空格,“:”与value之间需要有一个空格)</p>
 
         
       </div>
@@ -148,12 +147,12 @@
         
           <div class="post-tags">
             
-              <a href="/tags/git/">
-                #git
+              <a href="/tags/PHP/">
+                #PHP
               </a>
             
-              <a href="/tags/开发工具/">
-                #开发工具
+              <a href="/tags/YAML/">
+                #YAML
               </a>
             
           </div>
@@ -163,11 +162,13 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2015/03/25/git/">git简单入门</a>
+              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2015/03/25/yaml/">git简单入门</a>
+                <a href="/2015/03/25/weixinpay/">微信支付概要说明</a>
               
             </div>
           </div>
