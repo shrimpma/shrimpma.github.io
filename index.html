@@ -216,6 +216,17 @@
 
         
           
+            <span class="post-category">
+              &nbsp; | &nbsp; 分类于
+              
+                <a href="/categories/PHP/">PHP</a>
+
+                
+                
+
+              
+            </span>
+          
         
 
         
@@ -418,6 +429,106 @@
 
 
   
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/25/new self VS new Static/">
+                PHP new static VS new self 区别
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            发表于 2015-03-25
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; 分类于
+              
+                <a href="/categories/PHP/">PHP</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>&lt;?php<br>class A {<br>    public static function get_self() {<br>        return new self();<br>    }</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">get_static</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">static</span>();
+}
+</code></pre><p>}</p>
+<p>class B extends A {</p>
+<p>}</p>
+<p>echo get_class(B::get_self());  // A<br>echo ‘+++’;<br>echo get_class(B::get_static()); // B<br>echo ‘+++’;<br>echo get_class(A::get_static()); // A<br>/*<br>self refers to the same class in which the new keyword is actually written.</p>
+<p>static, in PHP 5.3’s late static bindings, refers to whatever class in the hierarchy you called the method on.</p>
+<p>In the following example, B inherits both methods from A. The self invocation is bound to A because it’s defined in A’s implementation of the first method, whereas static is bound to the called class (also see get_called_class()).</p>
+<ul>
+<li>in all: </li>
+<li>static equal get_called_class</li>
+<li>self  equal the basis class<br>*/</li>
+</ul>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/PHP/">
+                #PHP
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
 
           </div>
 
@@ -446,7 +557,7 @@
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
