@@ -18,9 +18,9 @@
 
 
 
-	<meta name="keywords" content="微信," />
+	<meta name="keywords" content="PHP,Yii framework," />
 
-  <title> 微信支付概要说明 // ShrimpMa's Notes </title>
+  <title> Yii框架-数据库操作demo // ShrimpMa's Notes </title>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
           
           
             
-              微信支付概要说明
+              Yii框架-数据库操作demo
             
           
         </h1>
@@ -131,12 +131,61 @@
         
 
         
-          <p>此文档只是概要说明微信支付，如需细节 移步 <a href="http://mch.weixin.qq.com/wiki/doc/api/index.html" target="_blank" rel="external">http://mch.weixin.qq.com/wiki/doc/api/index.html</a></p>
-<p>一.微信支付方式有四种 a.刷卡支付 b.公众号支付 c扫描支付 d.APP支付<br>其中刷卡支付和APP支付 PHP无法实现，前者java实现，后者为Andriod和IOS开发者,<br>公众号支付和扫描支付 为web开发者适用，都是基于网页的支付，以PHP为例</p>
-<p>二.公众号支付<br>    使用场景：微信内网页支付,有H5商城(H5即html5)<br>    准备材料：公众号必须是服务号，申请开通微信支付，有H5商城</p>
-<p>三 扫描支付<br>    使用场景：一般在PC端，根据微信支付的规则为不同的商品生成不同的二维码，用户扫描后支付</p>
-<pre><code>需要材料：申请开通微信支付模式，收到官方邮件 APPID,微信支付商户号，API密钥，Appsecret
-支付流程 参照jd.<span class="keyword">com</span>
+          <p>&lt;?php<br>/*适合Yii 初学者使用</p>
+<ul>
+<li>Yii 数据库增删改查 </li>
+<li>使用YII  Dao</li>
+<li><p>[CDbCommand]: 代表一条通过数据库执行的 SQL 语句。<br>*/<br>class CurdController extends Controller<br>{<br> public $layout=’column1’;</p>
+<p> //查询<br> public function actionQuery(){</p>
+<pre><code><span class="variable">$sql</span> = <span class="string">"select * from tbl_post limit 2 "</span>;
+<span class="variable">$tmp</span> = <span class="constant">Yii:</span><span class="symbol">:app</span>()-&gt;db-&gt;createCommand(<span class="variable">$sql</span>)-&gt;queryAll(); 
+print_r(<span class="variable">$tmp</span>);
+<span class="regexp">//</span><span class="variable">$tmp</span> array 
+</code></pre><p> }<br> //添加<br> public function actionAdd(){</p>
+<pre><code>$sql = 'insert into tbl_post (title,content,tags,status,author_id,create_time,update_time) values(<span class="string">"post title"</span>,<span class="string">"post content"</span>,<span class="number">1</span>,<span class="string">"ma"</span>,<span class="number">1</span>,'.time().','.time().')';
+//echo $sql;exit;
+$<span class="literal">result</span> = <span class="type">Yii</span>::app()-&gt;db-&gt;createCommand($sql)-&gt;execute();   // 执行无查询 <span class="type">SQL</span>
+<span class="keyword">if</span>($<span class="literal">result</span>){
+    echo 'insert success';
+    echo ' <span class="type">Insert</span> <span class="type">ID</span>:'.<span class="type">Yii</span>::app()-&gt;db-&gt;getLastInsertId();
+}<span class="keyword">else</span>{
+    echo 'insert fail';
+}
+</code></pre></li>
+</ul>
+<pre><code>}
+//删除操作
+public function actionDel(){
+    $sql = 'delete <span class="keyword">from</span> tbl_post where id=<span class="number">7</span>';
+    //echo $sql;exit;
+    $<span class="literal">result</span> = <span class="type">Yii</span>::app()-&gt;db-&gt;createCommand($sql)-&gt;execute();   // 执行无查询 <span class="type">SQL</span>
+    <span class="keyword">if</span>($<span class="literal">result</span>){
+        echo 'delete success';
+    }<span class="keyword">else</span>{
+        echo 'delete fail';
+    }
+}
+//修改操作
+public function actionUpdate(){
+    $sql = 'update tbl_post <span class="type">set</span>  title=<span class="string">"update title"</span> where id=<span class="number">8</span>';
+    $<span class="literal">result</span> = <span class="type">Yii</span>::app()-&gt;db-&gt;createCommand($sql)-&gt;execute();   // 执行无查询 <span class="type">SQL</span>
+    <span class="keyword">if</span>($<span class="literal">result</span>){
+        echo 'update success';
+    }<span class="keyword">else</span>{
+        echo 'update fail';
+    }
+}
+</code></pre><p>}</p>
+<p>/* 综述 </p>
+<pre><code>* <span class="variable">$rowCount</span>=<span class="variable">$command</span>-&gt;execute();   <span class="regexp">//</span> 执行无查询 <span class="constant">SQL</span>
+* <span class="variable">$dataReader</span>=<span class="variable">$command</span>-&gt;query();   <span class="regexp">//</span> 执行一个 <span class="constant">SQL </span>查询
+* <span class="variable">$rows</span>=<span class="variable">$command</span>-&gt;queryAll();      <span class="regexp">//</span> 查询并返回结果中的所有行
+* <span class="variable">$row</span>=<span class="variable">$command</span>-&gt;queryRow();       <span class="regexp">//</span> 查询并返回结果中的第一行
+* <span class="variable">$column</span>=<span class="variable">$command</span>-&gt;queryColumn(); <span class="regexp">//</span> 查询并返回结果中的第一列
+* <span class="variable">$value</span>=<span class="variable">$command</span>-&gt;queryScalar();  <span class="regexp">//</span> 查询并返回结果中第一行的第一个字段
+* 
+* 
+*<span class="regexp">/</span>
 </code></pre>
         
       </div>
@@ -147,8 +196,12 @@
         
           <div class="post-tags">
             
-              <a href="/tags/微信/">
-                #微信
+              <a href="/tags/PHP/">
+                #PHP
+              </a>
+            
+              <a href="/tags/Yii-framework/">
+                #Yii framework
               </a>
             
           </div>
@@ -158,13 +211,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/03/25/yaml/">YAML简介</a>
+                <a href="/2015/03/25/new self VS new Static/">PHP new static VS new self 区别</a>
               
             </div>
 
             <div class="post-nav-next post-nav-item">
-              
-                <a href="/2015/03/25/me/">shit</a>
               
             </div>
           </div>
