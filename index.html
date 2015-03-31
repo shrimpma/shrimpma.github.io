@@ -662,6 +662,109 @@ public function actionUpdate(){
 
 
   
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/03/25/yii-filter/">
+                Yii- 过滤器(filter) demo
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            发表于 2015-03-25
+          
+        </span>
+
+        
+          
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>过滤器：可以简单理解成这样，比如执行控制器中的方法A,先执行过滤器,再执行A。<br>比如发帖之前先登陆。<br>这是通过父类控制器的方法实现的，父类定义好了。直接使用就可以了。(Strategy desin pattern)<br>代码如下：<br>&lt;?php<br>/*</p>
+<ul>
+<li>Yii filter demo </li>
+<li>maarten</li>
+<li><p>*/<br>class CurdController extends Controller<br>{<br> public $layout=’column1’;</p>
+<p> public function filters()<br> {</p>
+<pre><code><span class="keyword">echo</span> <span class="string">'excute filters funciton'</span>;
+<span class="keyword">return</span> <span class="keyword">array</span>(
+    <span class="string">'accessControl'</span>, <span class="comment">// perform access control for CRUD operations</span>
+);
+</code></pre><p> }<br> public function accessRules()<br> {</p>
+<pre><code><span class="keyword">echo</span> <span class="string">'accessRules &lt;br&gt;'</span>;
+<span class="keyword">return</span> <span class="keyword">array</span>(
+    <span class="keyword">array</span>(<span class="string">'allow'</span>, <span class="comment">// allow authenticated users to access all actions</span>
+        <span class="string">'users'</span>=&gt;<span class="keyword">array</span>(<span class="string">'@'</span>),
+    ),
+    <span class="keyword">array</span>(<span class="string">'deny'</span>,  <span class="comment">// deny all users</span>
+        <span class="string">'users'</span>=&gt;<span class="keyword">array</span>(<span class="string">'*'</span>),
+    ),
+);
+</code></pre><p> }<br>public function actionIndex(){</p>
+<pre><code><span class="keyword">echo</span> <span class="keyword">__FUNCTION__</span>; 
+</code></pre><p>}<br>}</p>
+</li>
+</ul>
+
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/PHP/">
+                #PHP
+              </a>
+            
+              <a href="/tags/Yii-framework/">
+                #Yii framework
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
 
           </div>
 
@@ -690,7 +793,7 @@ public function actionUpdate(){
       <p class="site-description motion-element"></p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">

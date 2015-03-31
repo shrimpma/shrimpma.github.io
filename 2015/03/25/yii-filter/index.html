@@ -18,9 +18,9 @@
 
 
 
-	<meta name="keywords" content="PHP," />
+	<meta name="keywords" content="PHP,Yii framework," />
 
-  <title> PHP new static VS new self 区别 // ShrimpMa's Notes </title>
+  <title> Yii- 过滤器(filter) demo // ShrimpMa's Notes </title>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
           
           
             
-              PHP new static VS new self 区别
+              Yii- 过滤器(filter) demo
             
           
         </h1>
@@ -115,17 +115,6 @@
         </span>
 
         
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; 分类于
-              
-                <a href="/categories/PHP/">PHP</a>
-
-                
-                
-
-              
-            </span>
           
         
 
@@ -142,20 +131,30 @@
         
 
         
-          <p>&lt;?php<br>class A {<br>    public static function get_self() {<br>        return new self();<br>    }</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">get_static</span><span class="params">()</span> </span>{
-    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">static</span>();
-}
-</code></pre><p>}</p>
-<p>class B extends A {</p>
-<p>}</p>
-<p>echo get_class(B::get_self());  // A<br>echo ‘+++’;<br>echo get_class(B::get_static()); // B<br>echo ‘+++’;<br>echo get_class(A::get_static()); // A<br>/*<br>self refers to the same class in which the new keyword is actually written.</p>
-<p>static, in PHP 5.3’s late static bindings, refers to whatever class in the hierarchy you called the method on.</p>
-<p>In the following example, B inherits both methods from A. The self invocation is bound to A because it’s defined in A’s implementation of the first method, whereas static is bound to the called class (also see get_called_class()).</p>
+          <p>过滤器：可以简单理解成这样，比如执行控制器中的方法A,先执行过滤器,再执行A。<br>比如发帖之前先登陆。<br>这是通过父类控制器的方法实现的，父类定义好了。直接使用就可以了。(Strategy desin pattern)<br>代码如下：<br>&lt;?php<br>/*</p>
 <ul>
-<li>in all: </li>
-<li>static equal get_called_class</li>
-<li>self  equal the basis class<br>*/</li>
+<li>Yii filter demo </li>
+<li>maarten</li>
+<li><p>*/<br>class CurdController extends Controller<br>{<br> public $layout=’column1’;</p>
+<p> public function filters()<br> {</p>
+<pre><code><span class="keyword">echo</span> <span class="string">'excute filters funciton'</span>;
+<span class="keyword">return</span> <span class="keyword">array</span>(
+    <span class="string">'accessControl'</span>, <span class="comment">// perform access control for CRUD operations</span>
+);
+</code></pre><p> }<br> public function accessRules()<br> {</p>
+<pre><code><span class="keyword">echo</span> <span class="string">'accessRules &lt;br&gt;'</span>;
+<span class="keyword">return</span> <span class="keyword">array</span>(
+    <span class="keyword">array</span>(<span class="string">'allow'</span>, <span class="comment">// allow authenticated users to access all actions</span>
+        <span class="string">'users'</span>=&gt;<span class="keyword">array</span>(<span class="string">'@'</span>),
+    ),
+    <span class="keyword">array</span>(<span class="string">'deny'</span>,  <span class="comment">// deny all users</span>
+        <span class="string">'users'</span>=&gt;<span class="keyword">array</span>(<span class="string">'*'</span>),
+    ),
+);
+</code></pre><p> }<br>public function actionIndex(){</p>
+<pre><code><span class="keyword">echo</span> <span class="keyword">__FUNCTION__</span>; 
+</code></pre><p>}<br>}</p>
+</li>
 </ul>
 
         
@@ -171,6 +170,10 @@
                 #PHP
               </a>
             
+              <a href="/tags/Yii-framework/">
+                #Yii framework
+              </a>
+            
           </div>
         
 
@@ -178,13 +181,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2015/03/25/me/">shit</a>
+                <a href="/2015/03/25/yii-curd/">Yii框架-数据库操作demo</a>
               
             </div>
 
             <div class="post-nav-next post-nav-item">
-              
-                <a href="/2015/03/25/yii-curd/">Yii框架-数据库操作demo</a>
               
             </div>
           </div>
